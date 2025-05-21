@@ -4,10 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SocialBoost</title>
-   <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap " rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts - Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal :wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- Style.css إن كنت تستخدم ملف تنسيق خارجي -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* تأمين الخط العربي */
+    body {
+      font-family: 'Tajawal', sans-serif;
+    }
+  </style>
 </head>
 <body class="antialiased">
 
@@ -69,7 +81,7 @@
   </div>
 </footer>
 
-<!-- Render Dynamic Content -->
+<!-- Load Script -->
 <script src="script.js"></script>
 <script>
   const data = loadData();
