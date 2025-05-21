@@ -16,7 +16,8 @@
 
 <script src="script.js"></script>
 <script>
-  const data = loadData();
+  // تحميل البيانات
+  let data = loadData();
 
   function renderAdminPanel() {
     const panel = document.getElementById('admin-panel');
@@ -47,22 +48,28 @@
 
   function saveData() {
     const inputs = document.querySelectorAll('input');
-    const updated = {...data};
+
+    // عمل نسخة من البيانات الحالية
+    const updated = JSON.parse(JSON.stringify(data));
 
     inputs.forEach(input => {
       const platform = input.getAttribute('data-platform');
       const index = parseInt(input.getAttribute('data-index'));
       const field = input.getAttribute('data-field');
 
-      updated[platform][index][field] = input.value;
+      if (updated[platform] && updated[platform][index]) {
+        updated[platform][index][field] = input.value.trim();
+      }
     });
 
-    saveData(updated);
-    alert("✅ تم الحفظ بنجاح!");
+    // حفظ البيانات الجديدة
+    localStorage.setItem("serviceData", JSON.stringify(updated));
+    alert("✅ تم حفظ التعديلات بنجاح!");
+    location.reload(); // إعادة تحميل الصفحة
   }
 
   window.onload = () => {
-    if (!loadData()) {
+    if (!data || Object.keys(data).length === 0) {
       saveData(defaultData);
       location.reload();
     } else {
